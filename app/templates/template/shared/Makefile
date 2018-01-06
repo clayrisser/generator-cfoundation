@@ -1,32 +1,37 @@
 SHELL := /bin/bash
 CWD := $(shell pwd)
 
+.PHONY: all
 all: env
 
+.PHONY: start
 start:
 	@env/bin/python app clean
 
 env:
 	@virtualenv env
 	@env/bin/pip install -r ./requirements.txt
-	@echo created virtualenv
+	@echo ::: ENV :::
 
 .PHONY: freeze
 freeze:
 	@env/bin/pip freeze > ./requirements.txt
-	@echo froze requirements
+	@echo ::: FREEZE :::
 
 dist: env
-	@python setup.py sdist
-	@python setup.py bdist_wheel
-	@echo ran dist
+	@env/bin/python setup.py sdist
+	@env/bin/python setup.py bdist_wheel
+	@echo ::: DIST :::
+
+README.rst:
+	@pandoc --from=markdown --to=rst --output=README.rst README.md
 
 .PHONY: publish
-publish: dist
+publish: README.rst dist
 	@twine upload dist/*
-	@echo published
+	@echo ::: PUBLISH :::
 
 .PHONY: clean
 clean:
 	-@rm -rf ./env ./dist ./build ./*.egg-info ./*/*.pyc ./*/*/*.pyc &>/dev/null || true
-	@echo cleaned
+	@echo ::: CLEAN :::

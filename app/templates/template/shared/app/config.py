@@ -1,10 +1,10 @@
-NAME = 'cfoundation'
+NAME = '<%= name %>'
 
-AUTHOR = 'Jam Risser'
+AUTHOR = '<%= authorName %>'
 
-VERSION = '0.1.0'
+VERSION = '<%= version %>'
 
-COPYRIGHT = '2017'
+COPYRIGHT = '<%= moment().format('YYYY') %>'
 
 BANNER = '''
 dot v''' + VERSION + '''

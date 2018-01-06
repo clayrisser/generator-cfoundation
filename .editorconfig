@@ -9,5 +9,11 @@ insert_final_newline = true
 [*.{js,json}]
 charset = utf-8
 
+[*.py]
+indent_size = 4
+
+[Makefile]
+indent_style = tab
+
 [*.md]
 trim_trailing_whitespace = false

@@ -18,17 +18,17 @@ setup(
 
     version=config.VERSION,
 
-    description='A foundation made with cement',
+    description='<%= description %>',
 
     long_description=long_description,
 
-    url='https://github.com/jamrizzi/foundation',
+    url='<%= homepage %>',
 
-    author='Jam Risser',
+    author='<%= authorName %>',
 
-    author_email='jam@jamrizzi.com',
+    author_email='<%= authorEmail %>',
 
-    license='MIT',
+    license='<%= license %>',
 
     # https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[

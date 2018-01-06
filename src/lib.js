@@ -53,8 +53,8 @@ export function copy(yo) {
       ...yo.context
     ),
     yo.fs.copyTpl(
-      yo.templatePath('template/shared/README.rst'),
-      yo.destinationPath('README.rst'),
+      yo.templatePath('template/shared/README.md'),
+      yo.destinationPath('README.md'),
       ...yo.context
     ),
     yo.fs.copy(
