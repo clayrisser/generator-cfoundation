@@ -4,6 +4,7 @@ import optionOrPrompt from 'yeoman-option-or-prompt';
 import path from 'path';
 import {
   copy,
+  exec,
   guessEmail,
   guessUsername,
   guessName,
@@ -44,7 +45,7 @@ export default class extends Generator {
         type: 'input',
         name: 'version',
         message: 'Version:',
-        default: 'v0.0.1'
+        default: '0.0.1'
       },
       {
         type: 'input',
@@ -140,9 +141,11 @@ export default class extends Generator {
 
   conflicts() {}
 
-  install() {
-    // const install = this.options.install ? this.options.install[0].toLowerCase() : 'y';
-    // if (!this.answers.install || install === 'n' || install === 'f') {}
+  async install() {
+    const install = this.options.install ? this.options.install[0].toLowerCase() : 'y';
+    if (!this.answers.install || install === 'n' || install === 'f') return false;
+    await exec('virtualenv', ['env'], this);
+    return exec('env/bin/pip', ['install', '-r', './requirements.txt'], this);
   }
 
   end() {}

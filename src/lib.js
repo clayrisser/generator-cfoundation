@@ -1,6 +1,7 @@
 import emptyDir from 'empty-dir';
 import gitUserEmail from 'git-user-email';
 import gitUserName from 'git-user-name';
+import childProcess from 'child_process';
 
 export function isEmpty() {
   return emptyDir.sync(process.cwd());
@@ -24,6 +25,19 @@ export function guessName() {
 
 export function guessAuthorName() {
   return gitUserName() || 'Some Name';
+}
+
+export function exec(command, args, yo) {
+  return new Promise((resolve, reject) => {
+    const process = childProcess.spawn(command, args, { shell: true });
+    process.stdout.on('data', (data) => {
+      yo.log.info(data.toString());
+    });
+    process.stderr.on('data', (data) => {
+      yo.log.error(data.toString());
+    });
+    process.on('close', resolve);
+  });
 }
 
 export function copy(yo) {

@@ -4,7 +4,7 @@ CWD := $(shell pwd)
 all: env
 
 start:
-	@python app clean
+	@env/bin/python app clean
 
 env:
 	@virtualenv env
