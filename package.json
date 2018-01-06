@@ -1,6 +1,6 @@
 {
   "name": "generator-cfoundation",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Yeoman generator for cfoundation",
   "keywords": [
     "yeoman-generator",
@@ -18,6 +18,7 @@
     "link": "npm link && npm link generator-cfoundation",
     "lint": "node ./node_modules/eslint/bin/eslint ./",
     "lint:fix": "node ./node_modules/eslint/bin/eslint --fix ./",
+    "prepublish": "npm run build",
     "start": "npm run clean && npm run lint && npm run build && node ./node_modules/yo/lib/cli --destination=demo cfoundation",
     "test": "node ./node_modules/jnwb/lib/bin/nwb test",
     "test:coverage": "node ./node_modules/jnwb/lib/bin/nwb test --coverage",
