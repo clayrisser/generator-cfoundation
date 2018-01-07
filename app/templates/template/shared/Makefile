@@ -33,5 +33,5 @@ publish: README.rst dist
 
 .PHONY: clean
 clean:
-	-@rm -rf ./env ./dist ./build ./*.egg-info ./*/*.pyc ./*/*/*.pyc &>/dev/null || true
+	-@rm -rf ./env ./dist ./build ./*.egg-info ./*/*.pyc ./*/*/*.pyc README.rst &>/dev/null || true
 	@echo ::: CLEAN :::
